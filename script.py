@@ -36,10 +36,3 @@ new_yaml = {"next_question": new_q}
 
 with open(r'next_question.yml', 'w') as file:
     outputs = yaml.dump(new_yaml, file)
-
-
-with open('output.yml') as file:
-    try:
-        q2 = yaml.safe_load(file)   
-    except yaml.YAMLError as exc:
-        print(exc)

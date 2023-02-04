@@ -34,5 +34,5 @@ F.send_email(i_message, SENDER_EMAIL, SENDER_PWORD)
 new_q = q_no + 1
 new_yaml = {"next_question": new_q}
 
-with open(r'next_question2.yml', 'w') as file:
+with open(r'next_question.yml', 'w') as file:
     outputs = yaml.dump(new_yaml, file)

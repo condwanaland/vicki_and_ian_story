@@ -1,11 +1,12 @@
 from email.message import EmailMessage
 import smtplib
 
-def init_email(sender_email: str, to_email: str, q_no: str) -> EmailMessage:
+def init_email(sender_email: str, to_email: str, q_no: str, body: str) -> EmailMessage:
     message = EmailMessage()
-    message["Subject"] = f"Weekly Question. Number {q_no}"
+    message["Subject"] = f"Weekly Question: Number {q_no}"
     message['From'] = sender_email
     message['To'] = to_email
+    message.set_content(body)
     return message
 
 def send_email(message, sender_email, sender_pword) -> None:

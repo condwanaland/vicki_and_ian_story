@@ -23,11 +23,23 @@ with open('questions.yml') as file:
 
 q_no = next_q["next_question"]
 
-cur_question = questions["questions"][q_no]
+body = questions["questions"][q_no]
 
-v_message = F.init_email(SENDER_EMAIL, "condwanaland@gmail.com", q_no)
+v_message = F.init_email(SENDER_EMAIL, "condwanaland@gmail.com", q_no, body)
+i_message = F.init_email(SENDER_EMAIL, "condwanaland@gmail.com", q_no, body)
 
-F.send_email(v_message, "condwanaland@gmail.com")
+F.send_email(v_message, SENDER_EMAIL, SENDER_PWORD) 
+F.send_email(i_message, SENDER_EMAIL, SENDER_PWORD) 
+
+new_q = q_no + 1
+new_yaml = {"next_question": new_q}
+
+with open(r'next_question.yml', 'w') as file:
+    outputs = yaml.dump(new_yaml, file)
 
 
-
+with open('output.yml') as file:
+    try:
+        q2 = yaml.safe_load(file)   
+    except yaml.YAMLError as exc:
+        print(exc)

@@ -13,13 +13,13 @@ with open('next_question.yml') as file:
     try:
         next_q = yaml.safe_load(file)   
     except yaml.YAMLError as exc:
-        print(exc)
+        raise(exc)
 
 with open('questions.yml') as file:
     try:
         questions = yaml.safe_load(file)   
     except yaml.YAMLError as exc:
-        print(exc)
+        raise(exc)
 
 q_no = next_q["next_question"]
 
